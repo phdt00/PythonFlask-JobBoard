@@ -17,12 +17,12 @@ def execute_sql(sql, values=(), commit=False, single=False):
     connection = open_connection()
     cursor = connection.exexute(sql, values)
     if commit == True:
-        result = connection.commit()
+        results = connection.commit()
     else:
-        result = cursor.fetchone() if single else cursor.fetchall()
+        results = cursor.fetchone() if single else cursor.fetchall()
     
     cursor.close()
-    return result
+    return results
 
 @app.teardown_appcontext
 def close_connection(exception):
